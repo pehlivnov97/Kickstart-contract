@@ -19,11 +19,6 @@ contract CampaignFactory {
 }
 
 contract Campaign {
-    address public manager;
-    uint256 public minimunContribution;
-    mapping(address => bool) public approvers;
-    string public campaignDescription;
-
     struct Request {
         string description;
         uint256 value;
@@ -32,7 +27,12 @@ contract Campaign {
         uint256 approvalsCount;
         mapping(address => bool) approvals;
     }
+
     Request[] public requests;
+    address public manager;
+    uint256 public minimunContribution;
+    mapping(address => bool) public approvers;
+    string public campaignDescription;
     uint256 approversCount = 0;
 
     modifier onlyManagerCreateRequest() {
